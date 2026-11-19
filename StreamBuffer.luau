@@ -87,4 +87,9 @@ function StreamBuffer.writeLenString(self: Writer, value: string)
 	self.len = offset + 4 + byteCount
 end
 
+-- Return only the bytes written or allocated so far.
+function StreamBuffer.tostring(self: Writer): string
+	return buffer.readstring(self.buf, 0, self.len)
+end
+
 return StreamBuffer
